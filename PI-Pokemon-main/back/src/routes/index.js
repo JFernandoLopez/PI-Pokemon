@@ -1,16 +1,16 @@
 const express = require('express');
-const { getPokemons } = require('../controllers/getPokemons');
-const { getPokemonsById } = require('../controllers/getPokemosById');
-const { getPokemonsByName } = require('../controllers/getPokemonsByName');
+const { getPokemons } = require('../handlers/getPokemons')
+const { getPokemonsById } = require('../handlers/getPokemosById')
+const { getPokemonsByName } = require('../handlers/getPokemonsByName')
 const router = express.Router();
 
-router.get('/pokemons', getPokemons);
+router.get('/', getPokemons);
 
-router.get('/pokemons/:id', getPokemonsById);
+router.get('/idPokemon/:id', getPokemonsById);
 
-router.get('/pokemons/name', getPokemonsByName);
+router.get('/name', getPokemonsByName);
 
-router.post('/pokemons', );
+router.post('/', );
 
 router.get('/types', );
 

@@ -38,12 +38,12 @@ module.exports = (sequilize) => {
             type: DataTypes.REAL,
             allowNull: false,
         },
-        weigth: {
+        weight: {
             type: DataTypes.REAL,
             allowNull: false,
         },
         types: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER),
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,
         }
     }, {timestamps: false})
