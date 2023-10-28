@@ -6,7 +6,8 @@ const postPokemon = async (req, res) => {
         const pokemon = await ctrlpostPokemon(name, image, hp, attack, defense, speed, height, weight, types)
         return res.status(201).json(pokemon)
     } catch (error) {
-        return res.status(404).json({error: 'Theres not enought pokemos for us yet'})
+        console.log(error)
+        return res.status(404).json({error: 'Theres a problem, we ara looking for a solution'})
     }
 }
 
