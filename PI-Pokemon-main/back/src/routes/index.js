@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', getPokemons);
 
-router.get('/idPokemon/:id', getPokemonsById);
+router.get('/pokemon/:id', getPokemonsById);
 
 router.get('/name', getPokemonsByName);
 
