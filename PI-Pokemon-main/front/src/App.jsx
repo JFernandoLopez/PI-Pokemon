@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import LandingPage from './components/landingPage/landingPage'
+import Cards from './components/cards/Cards'
+import Nav from './components/nav/Nav'
+import axios from 'axios'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [auxiliar, setAuxiliar] = useState(false)
+  const [pokemons, setPokemons] = useState([]);
+  const { pathname } = useLocation();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const onSearch = async (name) => {
+    try {
+      const newPokemon = (await axios(`http://localhost:3001/name?name=${name}`)).data
+
+      if(newPokemon.name){
+       setPokemons((pokemons) => [...pokemons, newPokemon])
+      }
+
+    } catch (error) {
+      throw alert('No se econtró ningún pokemon')
+    }
+  }
+
+  const firstInsertion = async () => {
+    try {
+      const firstPokemon = (await axios(`http://localhost:3001/`)).data
+      setPokemons(firstPokemon)
+      setAuxiliar(true)
+    } catch (error) {
+      throw alert('No se econtró ningún pokemon')
+    }
+  }
+
+  const onClose = (name) => {
+    const pokemonsRemoved = pokemons.filter((pokemon) => {
+      return pokemon.name !== name
+    })
+
+    setPokemons(pokemonsRemoved)
+  }
+
+ return (
+  <div className='app'>
+    <Nav onSearch={onSearch}/>
+    <Routes>
+      <Route path='/' element={<LandingPage/>}/>
+      <Route path='/home' element={<Cards pokemons={pokemons} onClose={onClose}/>}/>
+    </Routes>
+  </div>
+ )
 }
 
 export default App
