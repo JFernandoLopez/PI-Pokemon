@@ -2,6 +2,7 @@ import LandingPage from './components/landingPage/landingPage'
 import Cards from './components/cards/Cards'
 import Nav from './components/nav/Nav'
 import axios from 'axios'
+import Detail from './components/detail/Detail'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import './App.css'
@@ -48,6 +49,7 @@ function App() {
     <Routes>
       <Route path='/' element={<LandingPage/>}/>
       <Route path='/home' element={<Cards pokemons={pokemons} onClose={onClose}/>}/>
+      <Route path='/detail/:name' element={<Detail/>}/>
     </Routes>
   </div>
  )
