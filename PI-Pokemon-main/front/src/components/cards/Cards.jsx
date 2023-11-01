@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const Cards = ({ pokemons, onClose }) => {
     const [pokemonsAded, setPokemonAded] = useState([])
+    const [auxiliar, setAuxiliar] = useState(false)
 
     const firstTwenty = async () => {
         try {
@@ -17,9 +18,11 @@ const Cards = ({ pokemons, onClose }) => {
     useEffect(() => {
         if (pokemons.length === 0) {
             firstTwenty().then(data => setPokemonAded(data));
+            return setAuxiliar(true)
         } else {
             setPokemonAded(pokemons);
         }
+            return setAuxiliar(false)
     }, [pokemons]);
    
     return(
@@ -32,6 +35,7 @@ const Cards = ({ pokemons, onClose }) => {
                 image={image}
                 onClose={onClose}
                 type_id={type_id}
+                auxiliar={auxiliar}
                 />
             })}
         </div>

@@ -1,10 +1,10 @@
-
 import { Link } from 'react-router-dom'
+import './card.css'
 
-const Card = ( {id, name, image, type_id, onClose } ) => {
+const Card = ( {id, name, image, type_id, onClose, auxiliar } ) => {
     return(
         <div className='Card' key ={id}>
-            <button onClick={() => {onClose(name)}} className='delete'>X</button>
+            {!auxiliar && <button onClick={() => {onClose(name)}} className='delete'>X</button>}
             <p>{id}</p>
             <Link to={`/detail/${name}`}>
                 <h2>{name}</h2>
