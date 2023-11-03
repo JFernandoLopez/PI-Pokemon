@@ -1,22 +1,18 @@
-import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ALPHA, ORDEN_ATTACK, GET_FIRST_TWENTY } from '../action-types/action-types';
+import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ALPHA, ORDEN_ATTACK , RESET_FILTERS} from '../action-types/action-types';
 
 const initialState = {
     pokemons: [],
+    originalPokemons: [],
     detailPokemon: [],
-    firstTwentyP: [],
 };
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case GET_FIRST_TWENTY:
-            return {
-                ...state,
-                firstTwentyP: action.payload
-            }
         case GET_BY_NAME:
             return {
                 ...state,
-                pokemons: [...state.pokemons, action.payload] 
+                pokemons: [...state.pokemons, action.payload],
+                originalPokemons: [...state.originalPokemons, action.payload]
             };
         case REMOVE_BY_NAME:
             const pokemonsRemoved = [...state.pokemons].filter((pokemon) => pokemon.name !== action.payload)
@@ -29,17 +25,22 @@ const reducer = (state = initialState, action) => {
                          detailPokemon: action.payload
             };
             case FILTER_TYPES:
-                const filterPokemonsTypes = [...state.pokemons].filter((pokemon) => pokemon.type_id.includes(action.payload))
-                return {
-                    ...state,
-                    pokemons: filterPokemonsTypes
+            const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.type_id.includes(action.payload));
+            return {
+                ...state,
+                pokemons: [...filteredTypes],
             };
             case FILTER_ORIGIN:
-                const filterPokemonOrigin = [...state.pokemons].filter((pokemon) => typeof pokemon.id === action.payload)
-                return {
-                    ...state,
-                    pokemons: filterPokemonOrigin
+            const filteredOrigin = state.originalPokemons.filter((pokemon) => typeof pokemon.id === action.payload);
+            return {
+                ...state,
+                pokemons: [...filteredOrigin],
             };
+            case RESET_FILTERS:
+            return {
+                ...state,
+                pokemons: originalPokemons
+            }
             case ORDEN_ALPHA:
                     const filterByOrderAlpha = action.payload == "Alphabeth A-L" ? [...state.pokemons].sort((a, b) => {
                         const nameA = a.name 

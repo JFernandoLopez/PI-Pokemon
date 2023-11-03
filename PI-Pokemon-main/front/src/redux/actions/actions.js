@@ -1,12 +1,5 @@
-import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ATTACK, ORDEN_ALPHA, GET_FIRST_TWENTY } from '../action-types/action-types';
+import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ATTACK, ORDEN_ALPHA, RESET_FILTERS } from '../action-types/action-types';
 import axios from 'axios'
-
-export const getFirstTwenty = () => {
-    return async (dispatch) => {
-        const firstTwenty = (await axios.get(`http://localhost:3001`)).data
-        dispatch({type: GET_FIRST_TWENTY, payload: firstTwenty})
-    }
-}
 
 export const getByName = (name) => {
     return async (dispatch) => {
@@ -32,6 +25,12 @@ export const filterByType = (types) => {
 
 export const filterByOrigin = (origin) => {
     return {type: FILTER_ORIGIN, payload: origin}
+};
+
+export const resetFilters = () => {
+    return {
+        type: RESET_FILTERS,
+    };
 };
 
 export const orderAlpha = (orden) => {

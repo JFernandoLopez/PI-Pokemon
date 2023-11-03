@@ -6,7 +6,6 @@ import './App.css'
 import { getByName, removeByName } from './redux/actions/actions'
 
 function App() {
-  const {pokemons} = useSelector((state) => state);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
@@ -23,7 +22,7 @@ function App() {
     <Nav onSearch={onSearch}/>
     <Routes>
       <Route path='/' element={<LandingPage/>}/>
-      <Route path='/home' element={<Cards pokemons={pokemons} onClose={onClose}/>}/>
+      <Route path='/home' element={<Cards onClose={onClose}/>}/>
       <Route path='/detail/:name' element={<Detail/>}/>
     </Routes>
   </div>
