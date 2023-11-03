@@ -1,0 +1,6 @@
+.app{
+    display: grid;
+    margin: 5px;
+    padding: 20px;
+    border-style:groove;
+}

@@ -1,33 +1,30 @@
 import { useState, useEffect } from "react";
 import Card from "../card/Card";
 import axios from 'axios'
+import { useDispatch, useSelector } from "react-redux";
+import { getFirstTwenty } from "../../redux/actions/actions";
 
 const Cards = ({ pokemons, onClose }) => {
     const [pokemonsAded, setPokemonAded] = useState([])
     const [auxiliar, setAuxiliar] = useState(false)
-
-    const firstTwenty = async () => {
-        try {
-            return (await axios.get('http://localhost:3001')).data;
-        } catch (error) {
-            console.error('Error fetching first twenty pokemons:', error);
-            return [];
-        }
-    };
+    const { firstTwentyP } = useSelector((state) => state)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (pokemons.length === 0) {
-            firstTwenty().then(data => setPokemonAded(data));
-            return setAuxiliar(true)
+            dispatch(getFirstTwenty());
+            setPokemonAded(firstTwentyP);
+            setAuxiliar(true);
         } else {
             setPokemonAded(pokemons);
+            setAuxiliar(false);
         }
-            return setAuxiliar(false)
+        return () => {}
     }, [pokemons]);
    
     return(
         <div>
-            {pokemonsAded?.map(({id, name, image, type_id})=> {
+            {pokemonsAded?.map(({id, name, image, type_id})=> {   
                 return <Card
                 key={id}
                 id={id}
