@@ -23,7 +23,7 @@ const Detail = () => {
             <h6>Speed: {detailPokemon?.speed}</h6>
             <h6>Height: {detailPokemon?.height}</h6>
             <h6>Weight: {detailPokemon?.weight}</h6>
-            {detailPokemon?.type_id && detailPokemon?.type_id.map((type, index) => (
+            {detailPokemon?.types && detailPokemon?.types.map((type, index) => (
                 <h4 key={index}>{type}</h4>
             ))}
         </div>

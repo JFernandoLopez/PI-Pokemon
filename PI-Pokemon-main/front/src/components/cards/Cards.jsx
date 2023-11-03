@@ -30,25 +30,25 @@ const Cards = ({ onClose }) => {
    
     return(
         <div>
-            {pokemons?.map(({id, name, image, type_id})=> {   
+            {pokemons?.map(({id, name, image, types})=> {   
                 return <Card
                 key={id}
                 id={id}
                 name={name}
                 image={image}
                 onClose={onClose}
-                type_id={type_id}
+                types={types}
                 auxiliar={auxiliar}
                 />
             })}
-            {pokemonsAded?.map(({id, name, image, type_id})=> {   
+            {pokemonsAded?.map(({id, name, image, types})=> {   
                 return <Card
                 key={id}
                 id={id}
                 name={name}
                 image={image}
                 onClose={onClose}
-                type_id={type_id}
+                types={types}
                 auxiliar={auxiliar}
                 />
             })}
