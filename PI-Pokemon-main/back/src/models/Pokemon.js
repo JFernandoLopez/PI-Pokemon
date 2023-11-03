@@ -3,7 +3,7 @@ const Type = require("./Type");
 
 module.exports = (sequilize) => {
     sequilize.define('Pokemon', {
-        UUID: {
+        id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false,

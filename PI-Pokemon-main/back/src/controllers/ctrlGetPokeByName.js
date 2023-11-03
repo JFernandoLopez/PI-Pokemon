@@ -42,7 +42,24 @@ const ctrlGetPokemonsByName = async (name) => {
         };
 
         return pokemon;
-    } else {
+    } 
+    if(foundPokemon){
+        const getByName = await Pokemon.findOne({where: {name: name}})
+        const pokemon = {
+            id: getByName.id,
+            name: getByName.name,
+            image: getByName.image,
+            hp: getByName.hp,
+            attack: getByName.attack,
+            defense: getByName.defense,
+            speed: getByName.speed,
+            height: getByName.height,
+            weight: getByName.weight,
+            types: getByName.types,
+        };
+        return pokemon
+    }
+    else {
         return null;
     }
 }
