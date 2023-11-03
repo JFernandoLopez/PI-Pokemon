@@ -1,8 +1,8 @@
-import { useLocation } from "react-router-dom";
+import Select from "../select/Select";
 import SearchBar from "../searchBar/searchBar"
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux"
-import Select from "../select/Select";
 import { filterByOrigin, filterByType, orderAlpha, orderAttack } from "../../redux/actions/actions"
 import './Nav.css'
 
@@ -42,6 +42,8 @@ const Nav = ({onSearch}) => {
            <Select name='orderName'  values={["Alphabeth A-L", "Alphabeth L-H"]} handleChange={handleEvent}/>
 
            <Select name='orderAttack' values={["Attack H-L", "Attack L-H"]} handleChange={handleEvent}/>
+
+           <Link to='/form'><button>Crea tu Pokemón</button></Link>
         </nav>
     )}
 }

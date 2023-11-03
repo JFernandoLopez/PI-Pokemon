@@ -1,4 +1,4 @@
-import { LandingPage, Cards, Nav, Detail} from './components/index'
+import { LandingPage, Cards, Nav, Detail, Form} from './components/index'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -24,6 +24,7 @@ function App() {
       <Route path='/' element={<LandingPage/>}/>
       <Route path='/home' element={<Cards onClose={onClose}/>}/>
       <Route path='/detail/:name' element={<Detail/>}/>
+      <Route path='/form' element={<Form/>}/>
     </Routes>
   </div>
  )
