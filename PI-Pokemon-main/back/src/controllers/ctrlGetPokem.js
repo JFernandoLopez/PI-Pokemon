@@ -19,7 +19,7 @@ const ctrlGetPokemons = async (URL) => {
         speed: bringPokemon.stats[5].base_stat,
         height: bringPokemon.height,
         weight: bringPokemon.weight,
-        type_id: type,
+        types: type,
 }});
 
     const pokemonDetails = await Promise.all(getPokemon);

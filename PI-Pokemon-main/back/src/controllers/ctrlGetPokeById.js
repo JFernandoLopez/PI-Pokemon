@@ -22,7 +22,7 @@ const ctrlPokemonsById = async(URL, source, id) => {
                 speed: specById.stats[5].base_stat,
                 height: specById.height,
                 weight: specById.weight,
-                type_id: typeIDs}
+                types: typeIDs}
                 
                 return pokemon
 

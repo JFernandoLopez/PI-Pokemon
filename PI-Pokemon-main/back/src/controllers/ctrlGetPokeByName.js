@@ -38,7 +38,7 @@ const ctrlGetPokemonsByName = async (name) => {
             speed: getByName.stats[5].base_stat,
             height: getByName.height,
             weight: getByName.weight,
-            type_id: typeIDs,
+            types: typeIDs,
         };
 
         return pokemon;

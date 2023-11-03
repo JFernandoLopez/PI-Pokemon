@@ -1,17 +1,4 @@
-// const { ctrlGetTypes } = require('../controllers/ctrlGetTypes')
-const axios = require('axios')
-const { Type } = require('../DB_connection')
-
-const ctrlGetTypes = async(URL) => {
-    const type = (await axios(URL)).data.results;
-    const types = await Promise.all(type.map(async (type) => {
-        await Type.findOrCreate({
-            where: {name: type.name}
-        })
-        return type.name
-    }))
-    return types
-}
+const { ctrlGetTypes } = require('../controllers/ctrlGetTypes')
 
 const getTypes = async(req, res) => {
     const URL = 'https://pokeapi.co/api/v2/type';
