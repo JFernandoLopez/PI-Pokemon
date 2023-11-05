@@ -19,7 +19,7 @@ export const getByName = (name) => {
             const newPokemon = (await axios.get(`http://localhost:3001/name?name=${name}`)).data;
             dispatch({ type: GET_BY_NAME, payload: newPokemon });
         } catch (error) {
-            alert("This pokemon could'nt exist yet");
+            alert("This pokemon don't exist yet");
 
             console.error('Error fetching data:', error);
         }
