@@ -12,7 +12,7 @@ router.get('/pokemon/:id', getPokemonsById);
 
 router.get('/name', getPokemonsByName);
 
-router.post('/', postPokemon);
+router.post('/pokemon', postPokemon);
 
 router.get('/types', getTypes);
 

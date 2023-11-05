@@ -2,10 +2,12 @@ const express = require("express");
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors')
 const { router } = require("./routes");
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.name = 'API';
 
