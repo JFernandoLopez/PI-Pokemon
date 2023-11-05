@@ -43,7 +43,7 @@ const Nav = ({onSearch}) => {
 
            <Select name='orderAttack' values={["Attack H-L", "Attack L-H"]} handleChange={handleEvent}/>
 
-           <Link to='/form'><button>Crea tu Pokemón</button></Link>
+           <Link to='/form'><button>Create your Pokemon</button></Link>
         </nav>
     )}
 }

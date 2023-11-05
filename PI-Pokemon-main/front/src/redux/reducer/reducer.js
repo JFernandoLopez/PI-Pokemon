@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
                          detailPokemon: action.payload
             };
             case FILTER_TYPES:
-            const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.type_id.includes(action.payload));
+            const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
             return {
                 ...state,
                 pokemons: [...filteredTypes],
