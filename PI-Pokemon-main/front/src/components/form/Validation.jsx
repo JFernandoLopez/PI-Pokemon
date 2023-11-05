@@ -33,8 +33,11 @@ const Validation = (pokemonData) => {
  if(parseInt(pokemonData.weight) >= 9999) {errors.weight = "Weight points must be low 10000 points"}
 
  if(pokemonData.weight === '') {errors.weight = 'Put some weight points to your pokemon'}
-
+ 
  if(pokemonData.types[0] === "" && pokemonData.types[1] === ""){errors.types = "Put at least one types for your pokemon"}
+
+ if(pokemonData.types[0] === pokemonData.types[1]){errors.types = "Types can't repeat"}
+
  
  return errors
 }

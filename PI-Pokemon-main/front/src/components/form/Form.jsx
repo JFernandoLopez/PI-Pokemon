@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Validation from "./Validation"
 import Input from "../input/Input"
+import axios from 'axios'
 const types = ["","normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "unknown", "shadow"]
 
 const Form = () => {
@@ -15,7 +16,7 @@ const Form = () => {
         speed: "",
         height: "",
         weight: "",
-        types: ["",""]
+        types: []
     });
     const [touchedFields, setTouchedFields] = useState({
         name: false,
@@ -39,21 +40,21 @@ const Form = () => {
 
     const handleTypes = (event) => {
         const value = event.target.value;
-    const className = event.target.className;
+        const className = event.target.className;
 
-    const updatedTypes = [...newPokemon.types];
+        const updatedTypes = [...newPokemon.types];
 
-    if (className === 'typesForm1') {
-        updatedTypes[0] = value;
-    }
+        if (className === 'typesForm1') {
+            updatedTypes[0] = value;
+            }
 
-    if (className === 'typesForm2') {
-        updatedTypes[1] = value;
-    }
+        if (className === 'typesForm2') {
+            updatedTypes[1] = value;
+            }
 
     setNewPokemon({
         ...newPokemon,
-        types: updatedTypes
+        types: updatedTypes.filter((type) => type !== '')
     });
 
     handleFieldTouch('types');
@@ -76,6 +77,9 @@ const Form = () => {
 
     const submitNewPokemon = (event) => {
         event.preventDefault()
+        axios.post("http://localhost:3001/pokemon", newPokemon)
+        .then(res => alert(res))
+        .catch(error => alert(error))
     }
 
     return(
@@ -110,7 +114,7 @@ const Form = () => {
             <select name='types' onChange={handleTypes} className='typesForm2' onBlur={() => handleFieldTouch('types')}>
                 {types.map((type, index) => <option value={type} key={index}>{type}</option>)}
             </select>
-            {errors.types && <p style={{color: 'red'}}>{errors.types}</p>}
+            {errors.types && <p style={{color: 'yellow'}}>{errors.types}</p>}
 
             <input type="submit" name="ingresar"></input>
         </form>
