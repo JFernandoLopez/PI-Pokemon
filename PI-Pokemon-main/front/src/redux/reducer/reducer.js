@@ -53,7 +53,7 @@ const reducer = (state = initialState, action) => {
                 firstTwentys: originalFirstTwentys
             }
             case ORDEN_ALPHA:
-                    const filterByOrderAlpha = action.payload == "Alphabeth A-L" ? [...state.pokemons].sort((a, b) => {
+                    const filterByOrderAlpha = action.payload == "Alphabeth A-Z" ? [...state.pokemons].sort((a, b) => {
                         const nameA = a.name 
                         const nameB = b.name
                         if (nameA < nameB) {
@@ -74,7 +74,7 @@ const reducer = (state = initialState, action) => {
                           }
                           return 0;
                     })
-                    const filterByOrderAlphaFirst = action.payload == "Alphabeth A-L" ? [...state.firstTwentys].sort((a, b) => {
+                    const filterByOrderAlphaFirst = action.payload == "Alphabeth A-Z" ? [...state.firstTwentys].sort((a, b) => {
                         const nameA = a.name 
                         const nameB = b.name
                         if (nameA < nameB) {
@@ -101,10 +101,10 @@ const reducer = (state = initialState, action) => {
                     firstTwentys: filterByOrderAlphaFirst
                 }
             case ORDEN_ATTACK:
-                const filterByOrderAttack = action.payload === "Attack H-L"
+                const filterByOrderAttack = action.payload === "Attack L-H"
                 ? [...state.pokemons].sort((a, b) => a.attack - b.attack)
                 : [...state.pokemons].sort((a, b) => b.attack - a.attack);
-                const filterByOrderAttackFirst = action.payload === "Attack H-L"
+                const filterByOrderAttackFirst = action.payload === "Attack L-H"
                 ? [...state.firstTwentys].sort((a, b) => a.attack - b.attack)
                 : [...state.firstTwentys].sort((a, b) => b.attack - a.attack);
                 return {

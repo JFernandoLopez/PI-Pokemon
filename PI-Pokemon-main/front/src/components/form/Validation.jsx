@@ -34,9 +34,9 @@ const Validation = (pokemonData) => {
 
  if(pokemonData.weight === '') {errors.weight = 'Put some weight points to your pokemon'}
  
- if(pokemonData.types[0] === "" && pokemonData.types[1] === ""){errors.types = "Put at least one types for your pokemon"}
+ if(pokemonData.types.length === 0){errors.types = "Put at least one types for your pokemon"}
 
- if(pokemonData.types[0] === pokemonData.types[1]){errors.types = "Types can't repeat"}
+ if(pokemonData.types[0] === pokemonData.types[1] && pokemonData.types.length >0){errors.types = "Types can't repeat"}
 
  
  return errors

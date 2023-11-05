@@ -39,7 +39,7 @@ const Nav = ({onSearch}) => {
                 <option value='number'>API</option>
            </select>
 
-           <Select name='orderName'  values={["Alphabeth A-L", "Alphabeth L-H"]} handleChange={handleEvent}/>
+           <Select name='orderName'  values={["Alphabeth A-Z", "Alphabeth Z-A"]} handleChange={handleEvent}/>
 
            <Select name='orderAttack' values={["Attack H-L", "Attack L-H"]} handleChange={handleEvent}/>
 
