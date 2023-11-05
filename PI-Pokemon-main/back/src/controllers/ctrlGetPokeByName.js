@@ -58,9 +58,8 @@ const ctrlGetPokemonsByName = async (name) => {
             types: getByName.types,
         };
         return pokemon
-    }
-    else {
-        return null;
+    } else{
+        return error
     }
 }
 
