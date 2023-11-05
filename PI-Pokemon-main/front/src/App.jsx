@@ -1,16 +1,14 @@
 import { LandingPage, Nav, Detail, Form, Home} from './components/index'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import {  useDispatch } from 'react-redux'
 import './App.css'
 import { getByName, removeByName } from './redux/actions/actions'
 
 function App() {
-  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  const onSearch =  (name) => {
-    dispatch(getByName(name))
+  const onSearch = (name) => {
+      dispatch(getByName(name))
   }
 
   let onClose = (name) => {

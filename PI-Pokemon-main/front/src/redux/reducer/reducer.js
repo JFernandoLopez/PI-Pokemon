@@ -1,13 +1,21 @@
-import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ALPHA, ORDEN_ATTACK , RESET_FILTERS} from '../action-types/action-types';
+import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ALPHA, ORDEN_ATTACK , RESET_FILTERS, GET_FIRST_TWENTY} from '../action-types/action-types';
 
 const initialState = {
     pokemons: [],
     originalPokemons: [],
     detailPokemon: [],
+    firstTwentys: [],
+    originalFirstTwentys: [],
 };
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
+        case GET_FIRST_TWENTY:
+            return {
+                ...state,
+                firstTwentys: action.payload,
+                originalFirstTwentys: action.payload
+            }
         case GET_BY_NAME:
             return {
                 ...state,
@@ -26,9 +34,11 @@ const reducer = (state = initialState, action) => {
             };
             case FILTER_TYPES:
             const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
+            const filteredFirstTwentys = state.originalFirstTwentys.filter((pokemon) => pokemon.types.includes(action.payload))
             return {
                 ...state,
                 pokemons: [...filteredTypes],
+                firstTwentys: [...filteredFirstTwentys]
             };
             case FILTER_ORIGIN:
             const filteredOrigin = state.originalPokemons.filter((pokemon) => typeof pokemon.id === action.payload);
@@ -39,7 +49,8 @@ const reducer = (state = initialState, action) => {
             case RESET_FILTERS:
             return {
                 ...state,
-                pokemons: originalPokemons
+                pokemons: originalPokemons,
+                firstTwentys: originalFirstTwentys
             }
             case ORDEN_ALPHA:
                     const filterByOrderAlpha = action.payload == "Alphabeth A-L" ? [...state.pokemons].sort((a, b) => {
@@ -63,17 +74,43 @@ const reducer = (state = initialState, action) => {
                           }
                           return 0;
                     })
+                    const filterByOrderAlphaFirst = action.payload == "Alphabeth A-L" ? [...state.firstTwentys].sort((a, b) => {
+                        const nameA = a.name 
+                        const nameB = b.name
+                        if (nameA < nameB) {
+                            return -1;
+                          }
+                          if (nameA > nameB) {
+                            return 1;
+                          }
+                          return 0;
+                    }) : [...state.firstTwentys].sort((a, b) => {
+                        const nameB = b.name
+                        const nameA = a.name
+                        if (nameA > nameB) {
+                            return -1;
+                          }
+                          if (nameA < nameB) {
+                            return 1;
+                          }
+                          return 0;
+                    })
                 return {
                     ...state,
-                    pokemons: filterByOrderAlpha
+                    pokemons: filterByOrderAlpha,
+                    firstTwentys: filterByOrderAlphaFirst
                 }
             case ORDEN_ATTACK:
                 const filterByOrderAttack = action.payload === "Attack H-L"
                 ? [...state.pokemons].sort((a, b) => a.attack - b.attack)
                 : [...state.pokemons].sort((a, b) => b.attack - a.attack);
+                const filterByOrderAttackFirst = action.payload === "Attack H-L"
+                ? [...state.firstTwentys].sort((a, b) => a.attack - b.attack)
+                : [...state.firstTwentys].sort((a, b) => b.attack - a.attack);
                 return {
                     ...state,
-                    pokemons: filterByOrderAttack
+                    pokemons: filterByOrderAttack,
+                    firstTwentys: filterByOrderAttackFirst
                 }
         default:
             return state;

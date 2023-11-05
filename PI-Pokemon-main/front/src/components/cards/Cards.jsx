@@ -2,30 +2,42 @@ import { useState, useEffect } from "react";
 import Pagination from "../pagination/Pagination";
 import Card from "../card/Card";
 import axios from 'axios'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getFirst } from "../../redux/actions/actions";
 
 const Cards = ({ onClose }) => {
-    const {pokemons} = useSelector((state) => state)
+    const dispatch = useDispatch()
+    const {pokemons, firstTwentys} = useSelector((state) => state)
     const [pokemonsAded, setPokemonAded] = useState([])
     const [auxiliar, setAuxiliar] = useState(false)
 
     const [actualPage, setActualPage] = useState(1);
     const twelveCards = 12;
 
-    const firstTwenty = async () => {
-        return (await axios.get(`http://localhost:3001/`)).data
-        }
+    // const firstTwenty = async () => {
+    //     // return (await axios.get(`http://localhost:3001/`)).data
+    //     dispatch(getFirst())
+    //     setPokemonAded(firstTwentys);
+    //     }
 
     useEffect(() => {
         const fetchData = async () => {
             if (pokemons.length === 0) {
-                const response = await firstTwenty();
-                setPokemonAded(response);
+                dispatch(getFirst())
+                setPokemonAded(await firstTwentys);
                 setAuxiliar(true);
             }
         };
         fetchData();
-    }, []);
+    }, [pokemons.length === 0]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setPokemonAded(await firstTwentys);
+            setAuxiliar(true);
+        }
+        fetchData();
+    }, [firstTwentys])
 
     useEffect(() => {
         setPokemonAded([])

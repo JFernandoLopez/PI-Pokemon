@@ -15,7 +15,7 @@ const SearchBar = ({onSearch}) => {
     return(
         <div className="search">
             <input onChange={handleChange} type="search" value={name} className="searchBar" placeholder="Name"></input>
-            <button onClick={handleClick} className="searchButton">Buscar</button>
+            <button onClick={handleClick} className="searchButton">Search Pokemon</button>
         </div>
     )
 }

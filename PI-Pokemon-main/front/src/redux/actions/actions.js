@@ -1,10 +1,28 @@
-import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ATTACK, ORDEN_ALPHA, RESET_FILTERS } from '../action-types/action-types';
+import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ATTACK, ORDEN_ALPHA, RESET_FILTERS, GET_FIRST_TWENTY } from '../action-types/action-types';
 import axios from 'axios'
+
+export const getFirst = () => {
+    return async (dispatch) => {
+        try {
+            const firstPok = (await axios.get(`http://localhost:3001`)).data;
+            dispatch({ type: GET_FIRST_TWENTY, payload: firstPok });
+        } catch (error) {
+            alert("Something went wrong");
+            console.error('Error fetching data:', error);
+        }
+    };
+}
 
 export const getByName = (name) => {
     return async (dispatch) => {
-        const newPokemon = (await axios.get(`http://localhost:3001/name?name=${name}`)).data
-        dispatch({type: GET_BY_NAME, payload: newPokemon})
+        try {
+            const newPokemon = (await axios.get(`http://localhost:3001/name?name=${name}`)).data;
+            dispatch({ type: GET_BY_NAME, payload: newPokemon });
+        } catch (error) {
+            alert("This pokemon could'nt exist yet");
+
+            console.error('Error fetching data:', error);
+        }
     };
 };
 
@@ -14,8 +32,14 @@ export const removeByName = (name) => {
 
 export const getDetails = (name) => {
     return async (dispatch) => {
-        const searchPokemon = (await axios.get(`http://localhost:3001/name?name=${name}`)).data
-        dispatch({type: GET_DETAILS, payload: searchPokemon})
+        try {
+            const searchPokemon = (await axios.get(`http://localhost:3001/name?name=${name}`)).data
+            dispatch({type: GET_DETAILS, payload: searchPokemon})
+        } catch (error) {
+            alert("Something went wrong searching details");
+
+            console.error('Error fetching data:', error);
+        }
     };
 };
 
