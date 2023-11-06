@@ -8,7 +8,6 @@ const Cards = ({ onClose }) => {
     const dispatch = useDispatch()
     const {pokemons, firstTwentys} = useSelector((state) => state)
     const [pokemonsAded, setPokemonAded] = useState([])
-    const [auxiliar, setAuxiliar] = useState(false)
 
     const [actualPage, setActualPage] = useState(1);
     const twelveCards = 12;
@@ -18,7 +17,6 @@ const Cards = ({ onClose }) => {
             if (pokemons.length === 0) {
                 dispatch(getFirst())
                 setPokemonAded(await firstTwentys);
-                setAuxiliar(true);
             }
         };
         fetchData();
@@ -27,14 +25,12 @@ const Cards = ({ onClose }) => {
     useEffect(() => {
         const fetchData = async () => {
             setPokemonAded(await firstTwentys);
-            setAuxiliar(true);
         }
         fetchData();
     }, [firstTwentys])
 
     useEffect(() => {
         setPokemonAded([])
-        setAuxiliar(false)
     }, [pokemons]);
 
     const iLastCard =  actualPage * twelveCards;
@@ -53,7 +49,6 @@ const Cards = ({ onClose }) => {
                     image={image}
                     onClose={onClose}
                     types={types}
-                    auxiliar={auxiliar}
                 />
             })}
             <Pagination

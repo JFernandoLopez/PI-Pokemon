@@ -1,17 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../../redux/actions/actions";
+import { cleanDetails, getDetails } from "../../redux/actions/actions";
 
 const Detail = () => {
     const params = useParams(); //name
-    const detailPokemon = useSelector((state) => state.detailPokemon)
+    const {detailPokemon} = useSelector((state) => state)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getDetails(params.name))
-        return () => {}
+        return () => dispatch(cleanDetails())
     }, [params?.name])
+
 
     return(
         <div>

@@ -1,4 +1,4 @@
-import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ALPHA, ORDEN_ATTACK , RESET_FILTERS, GET_FIRST_TWENTY} from '../action-types/action-types';
+import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ALPHA, ORDEN_ATTACK , RESET_FILTERS, GET_FIRST_TWENTY, CLEAN_DETAILS} from '../action-types/action-types';
 
 const initialState = {
     pokemons: [],
@@ -20,7 +20,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 pokemons: [...state.pokemons, action.payload],
-                originalPokemons: [...state.originalPokemons, action.payload]
+                originalPokemons: [...state.originalPokemons, action.payload],
+                originalFirstTwentys: []
             };
         case REMOVE_BY_NAME:
             const pokemonsRemoved = [...state.pokemons].filter((pokemon) => pokemon.name !== action.payload)
@@ -30,8 +31,15 @@ const reducer = (state = initialState, action) => {
             };
         case GET_DETAILS:
             return { ...state,
-                        detailPokemon: action.payload
+                        detailPokemon: action.payload,
+                        firstTwentys: [],
+                        originalFirstTwentys: []
         };
+        case CLEAN_DETAILS:
+            return {
+                ...state,
+                detailPokemon: [],
+            };
         case FILTER_TYPES:
         const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
         const filteredFirstTwentys = state.originalFirstTwentys.filter((pokemon) => pokemon.types.includes(action.payload))

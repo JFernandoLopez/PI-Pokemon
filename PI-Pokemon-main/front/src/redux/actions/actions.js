@@ -1,4 +1,4 @@
-import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ATTACK, ORDEN_ALPHA, RESET_FILTERS, GET_FIRST_TWENTY } from '../action-types/action-types';
+import { FILTER_TYPES, FILTER_ORIGIN, GET_BY_NAME, REMOVE_BY_NAME, GET_DETAILS, ORDEN_ATTACK, ORDEN_ALPHA, RESET_FILTERS, GET_FIRST_TWENTY, CLEAN_DETAILS } from '../action-types/action-types';
 import axios from 'axios'
 
 export const getFirst = () => {
@@ -42,6 +42,10 @@ export const getDetails = (name) => {
         }
     };
 };
+
+export const cleanDetails = () => {
+    return {type: CLEAN_DETAILS}
+}
 
 export const filterByType = (types) => {
     return {type: FILTER_TYPES, payload: types}

@@ -10,3 +10,33 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+.idCard{
+    margin: 1px;
+    padding: 3px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.nameCard{
+    margin: 1px;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+}
+
+.type{
+    margin: 1px;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.delete{
+    margin: 1px;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+}
