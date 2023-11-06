@@ -28,90 +28,90 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 pokemons: pokemonsRemoved
             };
-            case GET_DETAILS:
-                return { ...state,
-                         detailPokemon: action.payload
-            };
-            case FILTER_TYPES:
-            const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
-            const filteredFirstTwentys = state.originalFirstTwentys.filter((pokemon) => pokemon.types.includes(action.payload))
+        case GET_DETAILS:
+            return { ...state,
+                        detailPokemon: action.payload
+        };
+        case FILTER_TYPES:
+        const filteredTypes = state.originalPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
+        const filteredFirstTwentys = state.originalFirstTwentys.filter((pokemon) => pokemon.types.includes(action.payload))
+        return {
+            ...state,
+            pokemons: [...filteredTypes],
+            firstTwentys: [...filteredFirstTwentys]
+        };
+        case FILTER_ORIGIN:
+        const filteredOrigin = state.originalPokemons.filter((pokemon) => typeof pokemon.id === action.payload);
+        return {
+            ...state,
+            pokemons: [...filteredOrigin],
+        };
+        case RESET_FILTERS:
+        return {
+            ...state,
+            pokemons: originalPokemons,
+            firstTwentys: originalFirstTwentys
+        }
+        case ORDEN_ALPHA:
+                const filterByOrderAlpha = action.payload == "Alphabeth A-Z" ? [...state.pokemons].sort((a, b) => {
+                    const nameA = a.name 
+                    const nameB = b.name
+                    if (nameA < nameB) {
+                        return -1;
+                        }
+                        if (nameA > nameB) {
+                        return 1;
+                        }
+                        return 0;
+                }) : [...state.pokemons].sort((a, b) => {
+                    const nameB = b.name
+                    const nameA = a.name
+                    if (nameA > nameB) {
+                        return -1;
+                        }
+                        if (nameA < nameB) {
+                        return 1;
+                        }
+                        return 0;
+                })
+                const filterByOrderAlphaFirst = action.payload == "Alphabeth A-Z" ? [...state.firstTwentys].sort((a, b) => {
+                    const nameA = a.name 
+                    const nameB = b.name
+                    if (nameA < nameB) {
+                        return -1;
+                        }
+                        if (nameA > nameB) {
+                        return 1;
+                        }
+                        return 0;
+                }) : [...state.firstTwentys].sort((a, b) => {
+                    const nameB = b.name
+                    const nameA = a.name
+                    if (nameA > nameB) {
+                        return -1;
+                        }
+                        if (nameA < nameB) {
+                        return 1;
+                        }
+                        return 0;
+                })
             return {
                 ...state,
-                pokemons: [...filteredTypes],
-                firstTwentys: [...filteredFirstTwentys]
-            };
-            case FILTER_ORIGIN:
-            const filteredOrigin = state.originalPokemons.filter((pokemon) => typeof pokemon.id === action.payload);
-            return {
-                ...state,
-                pokemons: [...filteredOrigin],
-            };
-            case RESET_FILTERS:
-            return {
-                ...state,
-                pokemons: originalPokemons,
-                firstTwentys: originalFirstTwentys
+                pokemons: filterByOrderAlpha,
+                firstTwentys: filterByOrderAlphaFirst
             }
-            case ORDEN_ALPHA:
-                    const filterByOrderAlpha = action.payload == "Alphabeth A-Z" ? [...state.pokemons].sort((a, b) => {
-                        const nameA = a.name 
-                        const nameB = b.name
-                        if (nameA < nameB) {
-                            return -1;
-                          }
-                          if (nameA > nameB) {
-                            return 1;
-                          }
-                          return 0;
-                    }) : [...state.pokemons].sort((a, b) => {
-                        const nameB = b.name
-                        const nameA = a.name
-                        if (nameA > nameB) {
-                            return -1;
-                          }
-                          if (nameA < nameB) {
-                            return 1;
-                          }
-                          return 0;
-                    })
-                    const filterByOrderAlphaFirst = action.payload == "Alphabeth A-Z" ? [...state.firstTwentys].sort((a, b) => {
-                        const nameA = a.name 
-                        const nameB = b.name
-                        if (nameA < nameB) {
-                            return -1;
-                          }
-                          if (nameA > nameB) {
-                            return 1;
-                          }
-                          return 0;
-                    }) : [...state.firstTwentys].sort((a, b) => {
-                        const nameB = b.name
-                        const nameA = a.name
-                        if (nameA > nameB) {
-                            return -1;
-                          }
-                          if (nameA < nameB) {
-                            return 1;
-                          }
-                          return 0;
-                    })
-                return {
-                    ...state,
-                    pokemons: filterByOrderAlpha,
-                    firstTwentys: filterByOrderAlphaFirst
-                }
-            case ORDEN_ATTACK:
-                const filterByOrderAttack = action.payload === "Attack L-H"
-                ? [...state.pokemons].sort((a, b) => a.attack - b.attack)
-                : [...state.pokemons].sort((a, b) => b.attack - a.attack);
-                const filterByOrderAttackFirst = action.payload === "Attack L-H"
-                ? [...state.firstTwentys].sort((a, b) => a.attack - b.attack)
-                : [...state.firstTwentys].sort((a, b) => b.attack - a.attack);
-                return {
-                    ...state,
-                    pokemons: filterByOrderAttack,
-                    firstTwentys: filterByOrderAttackFirst
-                }
+        case ORDEN_ATTACK:
+            const filterByOrderAttack = action.payload === "Attack L-H"
+            ? [...state.pokemons].sort((a, b) => a.attack - b.attack)
+            : [...state.pokemons].sort((a, b) => b.attack - a.attack);
+            const filterByOrderAttackFirst = action.payload === "Attack L-H"
+            ? [...state.firstTwentys].sort((a, b) => a.attack - b.attack)
+            : [...state.firstTwentys].sort((a, b) => b.attack - a.attack);
+            return {
+                ...state,
+                pokemons: filterByOrderAttack,
+                firstTwentys: filterByOrderAttackFirst
+            }
         default:
             return state;
     }

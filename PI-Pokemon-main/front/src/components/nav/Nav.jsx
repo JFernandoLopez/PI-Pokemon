@@ -2,7 +2,7 @@ import Select from "../select/Select";
 import SearchBar from "../searchBar/searchBar"
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux"
+import { useDispatch} from "react-redux"
 import { filterByOrigin, filterByType, orderAlpha, orderAttack } from "../../redux/actions/actions"
 import './Nav.css'
 
