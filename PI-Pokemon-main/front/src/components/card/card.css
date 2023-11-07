@@ -1,42 +1,118 @@
 .Card {
-    display: flex;
-    margin: 5px;
+    display: grid;
+    gap: 15px 10px;
+    margin: 10px;
     padding: 10px;
     width: fit-content;
     height: fit-content;
-    border-style:groove;
-    border-color: white;
-    border-radius: 5px;
-    flex-direction: column;
-    flex-wrap: wrap;
+    border-style:  solid solid solid solid;
+    border-width: 0px 1px 10px 10px;
+    box-shadow: -4px 10px  #CCC8AA;
+    border-color: #191717;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 20px 30px 40px 180px 45px;
+    grid-template-areas: 
+    "B A"
+    "C C"
+    "C C"
+    "D D"
+    "E F";
+
 }
 
 .idCard{
+    grid-area: B;
     margin: 1px;
     padding: 3px;
-    width: fit-content;
     height: fit-content;
+    border-style:  solid solid solid solid;
+    border-width: 0px 0px 3px 1px;
+    border-color: #191717;
+    box-shadow: 4px -4px  #ccc8aa;
+    color: #191717;
+    justify-self: stretch;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .nameCard{
+    grid-area: C;
     margin: 1px;
     padding: 5px;
     width: fit-content;
     height: fit-content;
     text-decoration: none;
+    color: white;
+    align-self: center;
+    justify-self: center;
+    color: #191717;
 }
 
-.type{
+h2.nameCard{
+    border-style:  solid solid solid solid;
+    border-width: 0px 0px 3px 0px;
+    border-color: #191717;
+}
+
+.nameCard:hover{
+    background-color:#191717;
+    color: #CCC8AA;
+}
+
+.type0{
+    grid-area: E;
     margin: 1px;
     padding: 5px;
     width: fit-content;
     height: fit-content;
+    border-style:  solid solid solid solid;
+    border-width: 0px 0px 3px 1px;
+    border-color: #191717;
+    box-shadow: 4px -4px  #ccc8aa;
+    place-self: stretch;
+    color: #191717;
+}
+
+.type1{
+    grid-area: F;
+    margin: 1px;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+    border-style:  solid solid solid solid;
+    border-width: 0px 0px 3px 1px;
+    border-color: #191717;
+    box-shadow: 4px -4px  #ccc8aa;
+    place-self: stretch;
+    color: #191717;
 }
 
 .delete{
+    grid-area: A;
     margin: 1px;
-    padding: 5px;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 20px;
+    padding: 1px;
+    height: max-content;
+    color: #191717;
+    background-color: transparent;
+    justify-self: end;
+    border-color: transparent;
+}
+
+.delete:hover{
+    grid-area: A;
+    margin: 1px;
+    padding: 1px;
+    height: max-content;
+    filter: invert(100%);
+    box-shadow: -2px 2px  #ccc8aa;
+}
+
+.imageCard{
+    grid-area: D;
+    border-style:  solid solid solid solid;
+    border-width: 0px 0px 4px 2px;
+    border-color: #191717;
+    box-shadow: 4px -4px  #ccc8aa;
+    justify-self: center;
+    align-self: center;
 }

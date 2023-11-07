@@ -1,8 +1,9 @@
 import Cards from "../cards/Cards";
+import './home.css'
 
 const Home = ({onClose}) => {
     return(
-    <div>
+    <div className="home">
     <Cards onClose={onClose}/>
     </div>
     )

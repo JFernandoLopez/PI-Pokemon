@@ -27,7 +27,8 @@ const reducer = (state = initialState, action) => {
             const pokemonsRemoved = [...state.pokemons].filter((pokemon) => pokemon.name !== action.payload)
             return {
                 ...state,
-                pokemons: pokemonsRemoved
+                pokemons: pokemonsRemoved,
+                originalPokemons: pokemonsRemoved
             };
         case GET_DETAILS:
             return { ...state,
@@ -57,8 +58,8 @@ const reducer = (state = initialState, action) => {
         case RESET_FILTERS:
         return {
             ...state,
-            pokemons: originalPokemons,
-            firstTwentys: originalFirstTwentys
+            pokemons: state.originalPokemons,
+            firstTwentys: state.originalFirstTwentys
         }
         case ORDEN_ALPHA:
                 const filterByOrderAlpha = action.payload == "Alphabeth A-Z" ? [...state.pokemons].sort((a, b) => {

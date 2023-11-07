@@ -1,6 +1,7 @@
 .app{
     display: grid;
-    margin: 5px;
-    padding: 20px;
-    border-style:groove;
+    margin:0px;
+    padding: 0px;
+    border-color: black;
+    background-color: #F1EFEF;
 }

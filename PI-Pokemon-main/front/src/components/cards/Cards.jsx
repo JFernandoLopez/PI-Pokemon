@@ -6,7 +6,7 @@ import { getFirst } from "../../redux/actions/actions";
 
 const Cards = ({ onClose }) => {
     const dispatch = useDispatch()
-    const {pokemons, firstTwentys} = useSelector((state) => state)
+    const {pokemons, firstTwentys, originalPokemons} = useSelector((state) => state)
     const [pokemonsAded, setPokemonAded] = useState([])
 
     const [actualPage, setActualPage] = useState(1);
@@ -20,7 +20,7 @@ const Cards = ({ onClose }) => {
             }
         };
         fetchData();
-    }, [pokemons.length === 0]);
+    }, [originalPokemons.length === 0]);
 
     useEffect(() => {
         const fetchData = async () => {

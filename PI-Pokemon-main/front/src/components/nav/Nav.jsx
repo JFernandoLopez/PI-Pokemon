@@ -3,7 +3,7 @@ import SearchBar from "../searchBar/searchBar"
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch} from "react-redux"
-import { filterByOrigin, filterByType, orderAlpha, orderAttack } from "../../redux/actions/actions"
+import { filterByOrigin, filterByType, orderAlpha, orderAttack, resetFilters } from "../../redux/actions/actions"
 import './Nav.css'
 
 const Nav = ({onSearch}) => {
@@ -24,6 +24,10 @@ const Nav = ({onSearch}) => {
             dispatch(orderAttack(event.target.value))
         }
     }
+
+    const clean = () => {
+        dispatch(resetFilters())
+    }
     
     const firstLocation = pathname === '/'
     if(!firstLocation){
@@ -42,6 +46,8 @@ const Nav = ({onSearch}) => {
            <Select name='orderName'  values={["Alphabeth A-Z", "Alphabeth Z-A"]} handleChange={handleEvent}/>
 
            <Select name='orderAttack' values={["Attack H-L", "Attack L-H"]} handleChange={handleEvent}/>
+
+           <button onClick={() => clean()}>Clean Filters</button>
 
            <Link to='/form'><button>Create your Pokemon</button></Link>
         </nav>

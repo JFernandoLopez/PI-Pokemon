@@ -7,7 +7,7 @@ export const getFirst = () => {
             const firstPok = (await axios.get(`http://localhost:3001`)).data;
             dispatch({ type: GET_FIRST_TWENTY, payload: firstPok });
         } catch (error) {
-            alert("Something went wrong");
+            alert(error.message);
             console.error('Error fetching data:', error);
         }
     };
@@ -56,9 +56,7 @@ export const filterByOrigin = (origin) => {
 };
 
 export const resetFilters = () => {
-    return {
-        type: RESET_FILTERS,
-    };
+    return { type: RESET_FILTERS };
 };
 
 export const orderAlpha = (orden) => {
