@@ -1,3 +1,11 @@
-/* .home{
-    background-color: #E3E3E3;
-} */
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 150px;
+    height: 1000px;
+    grid-template-areas: 
+    "A A A A"
+    "A A A A"
+    "A A A A"
+    "B B B B"
+}

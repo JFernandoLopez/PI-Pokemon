@@ -40,7 +40,7 @@ const Cards = ({ onClose }) => {
     const onPageChange = (pageNumber) =>  setActualPage(pageNumber)
    
     return(
-        <div>
+        <div className="cards">
             {actualCards?.map(({ id, name, image, types }) => {
                 return <Card
                     key={id}

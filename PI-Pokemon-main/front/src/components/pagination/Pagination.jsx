@@ -1,4 +1,4 @@
-
+import './pagination.css'
 
 const Pagination = ({twelveCards, allCards, onPageChange}) => {
     const pageNumb = [];
@@ -8,7 +8,7 @@ const Pagination = ({twelveCards, allCards, onPageChange}) => {
     }
 
     return(
-        <nav>
+        <nav className='navPag'>
             <ul className="pagination">
                 {pageNumb?.map((page) => 
                 <li className='paginationItem' key={page}>
