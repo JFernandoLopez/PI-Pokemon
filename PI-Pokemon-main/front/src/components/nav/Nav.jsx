@@ -34,7 +34,6 @@ const Nav = ({onSearch}) => {
     return(
         <nav className="Nav">
            <SearchBar onSearch={onSearch}/>
-           {pathname !== '/home' && <Link to='/home'><button>Back Home</button></Link>}
 
            <Select name='filterType' values={["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "unknown", "shadow"]} handleChange={handleEvent}/>
 
@@ -47,9 +46,10 @@ const Nav = ({onSearch}) => {
 
            <Select name='orderAttack' values={["Attack H-L", "Attack L-H"]} handleChange={handleEvent}/>
 
-           <button onClick={() => clean()}>Clean Filters</button>
+           <button onClick={() => clean()} className="navButtons">Clean Filters</button>
 
-           <Link to='/form'><button>Create your Pokemon</button></Link>
+           {pathname !== '/home' && <Link to='/home'><button className="navButtons">Back Home</button></Link>}
+           {pathname !== '/form' && <Link to='/form'><button className="navButtons">Create your Pokemon</button></Link>}
         </nav>
     )}
 }

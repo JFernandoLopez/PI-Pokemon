@@ -1,4 +1,29 @@
 .Nav {
-    border-style:dashed;
-    border-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-style: none none solid none;
+    border-color: #191717;
+    background-color: #F1EFEF;
+    margin: none;
+    padding: none;
+    position:sticky;
+    top: 0px;
+}
+
+Select, .navButtons, Link{
+    width: fit-content;
+    height: 40px;
+    border-style: solid solid solid solid;
+    border-width: 0px 1px 1px 0px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #191717;
+    background-color: #F1EFEF;
+}
+
+Select:hover, Select:focus , .navButtons:hover, Link:hover{
+    color: #F1EFEF;
+    background-color: #191717;
 }

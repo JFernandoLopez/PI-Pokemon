@@ -1,0 +1,109 @@
+
+div.detailP{
+    align-self: center;
+    justify-self: center;
+    margin: 8px;
+    padding: 20px;
+    background-color: transparent;
+    border-style: solid solid solid solid;
+    border-width: 0px 10px 10px 0px;
+    border-color: #191717;
+    display: grid;
+    grid-template-columns: 1fr 200px 200px;
+    grid-template-rows: 40px auto 105px auto;
+    grid-template-areas: 
+    "A C G"
+    "A D H"
+    "B E I"
+    "B F J";
+}
+
+h2.detailP{
+    grid-area: A;
+    font-size: 45px;
+    justify-self: center;
+    align-self: center;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 10px;
+    border-color: #191717;
+}
+
+img.detailP{
+    grid-area: B;
+    justify-self: center;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 10px;
+    border-color: #191717;
+}
+h5.hpP{
+    grid-area: C;
+    justify-self: center;
+    align-self: center;
+    font-size: 20px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+
+h5.attackP{
+    grid-area: D;
+    justify-self: center;
+    align-self: end;
+    font-size: 20px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+h5.defenseP{
+    grid-area: E;
+    justify-self: center;
+    font-size: 20px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+h6.speedP{
+    grid-area: G;
+    justify-self: center;
+    align-self: center;
+    font-size: 20px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+h6.heightP{
+    grid-area: H;
+    justify-self: center;
+    align-self: center;
+    font-size: 20px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+h6.weightP{
+    grid-area: I;
+    justify-self: center;
+    align-self: center;
+    font-size: 20px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+h4{
+    justify-self: center;
+    align-self: end;
+    font-size: 30px;
+    color: #191717;
+    border-bottom: solid;
+    border-width: 5px;
+    border-color: #191717;
+}
+

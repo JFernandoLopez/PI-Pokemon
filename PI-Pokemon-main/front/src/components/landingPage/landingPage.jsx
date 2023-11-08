@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import './landingPage.css'
 
 const LandingPage = () => {
     const location = useLocation();
@@ -7,8 +8,8 @@ const LandingPage = () => {
 
     if(firstLocation){
     return (
-        <div>
-            <button className="toHomePage"><Link to='/home'>Search Pokemons</Link></button>
+        <div className="landing">
+            <Link to='/home' className="toHomePage"><button className="toHomePage">Search Pokemons</button></Link>
         </div>
     )}
 }

@@ -25,11 +25,13 @@ const reducer = (state = initialState, action) => {
             };
         case REMOVE_BY_NAME:
             const pokemonsRemoved = [...state.pokemons].filter((pokemon) => pokemon.name !== action.payload)
+            const pokemonsRemovedF = [...state.firstTwentys].filter((pokemon) => pokemon.name !== action.payload)
             return {
                 ...state,
                 pokemons: pokemonsRemoved,
-                originalPokemons: pokemonsRemoved
-            };
+                originalPokemons: pokemonsRemoved,
+                firstTwentys: pokemonsRemovedF 
+            }
         case GET_DETAILS:
             return { ...state,
                         detailPokemon: action.payload,
@@ -51,9 +53,11 @@ const reducer = (state = initialState, action) => {
         };
         case FILTER_ORIGIN:
         const filteredOrigin = state.originalPokemons.filter((pokemon) => typeof pokemon.id === action.payload);
+        const filteredOriginF = state.originalFirstTwentys.filter((pokemon) => typeof pokemon.id === action.payload);
         return {
             ...state,
             pokemons: [...filteredOrigin],
+            firstTwentys: [...filteredOriginF]
         };
         case RESET_FILTERS:
         return {

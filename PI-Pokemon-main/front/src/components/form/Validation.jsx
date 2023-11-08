@@ -4,6 +4,8 @@ const Validation = (pokemonData) => {
 
  if(pokemonData.name === ''){ errors.name = 'Invalid name'}
 
+ if(/[A-Z]/.test(pokemonData.name)){errors.name = 'Name cannot contain Mayus'}
+
  if(/\s/g.test(pokemonData.name)){ errors.name = "Invalid space in name"}
 
  if (!pokemonData.image.includes('.jpg') && !pokemonData.image.includes('.png')){ errors.image = "Image must have format .jpg/.png"}
@@ -30,7 +32,7 @@ const Validation = (pokemonData) => {
 
  if(pokemonData.height === ''){errors.height = 'Put some height points to your pokemon'}
  
- if(parseInt(pokemonData.weight) >= 9999) {errors.weight = "Weight points must be low 10000 points"}
+ if(parseInt(pokemonData.weight) >= 9998) {errors.weight = "Weight points must be low 10000 points"}
 
  if(pokemonData.weight === '') {errors.weight = 'Put some weight points to your pokemon'}
  

@@ -1,0 +1,135 @@
+.form{
+    list-style: none;
+    width: 100%;
+    height: max-content;
+    display: grid;
+    background-color: #191717;
+    color: #CCC8AA;
+    grid-template-columns: 500px 600px 100px;
+    grid-template-areas: 
+    "A B C";
+}
+
+h2.addAtributes{
+    grid-area: A;
+    padding: 30px;
+    margin: 10px;
+    align-self: center;
+    justify-self: center;
+    font-weight: bolder;
+}
+
+ul.putAtributes{
+    grid-area: B;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+
+}
+
+li.form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: none;
+}
+
+div.inputForm{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: none;
+    width: 600px;
+}
+
+.inputsForm{
+    width: 400px;
+    height: 20px;
+    margin: 0%;
+    padding: 5px;
+    background-color: #CCC8AA;
+    border-style: solid solid solid solid;
+    border-color: #191717;
+    color: #191717;
+    font-weight: bolder;
+}
+
+.inputsForm:hover, .inputsForm:focus{
+    background-color: #191717;
+    border-style: solid solid solid solid;
+    border-color: #CCC8AA;
+    color: #CCC8AA;
+}
+
+.labelsForm{
+    font-weight: bold;
+    width: fit-content;
+}  
+
+
+select.typesForm1{
+    width: fit-content;
+    height: 40px;
+    border-style: solid solid solid solid;
+    border-width: 0px 1px 1px 0px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #191717;
+    background-color: #CCC8AA;
+}
+
+select.typesForm1:hover, select.typesForm1:focus{
+    color: #F1EFEF;
+    background-color: #191717;
+}
+
+select.typesForm2{
+    width: fit-content;
+    height: 40px;
+    border-style: solid solid solid solid;
+    border-width: 0px 1px 1px 0px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #191717;
+    background-color: #CCC8AA;
+}
+
+select.typesForm2:hover, select.typesForm2:focus{
+    color: #F1EFEF;
+    background-color: #191717;
+}
+
+.submitDisabled{
+    grid-area: C;
+    width: 200px;
+    height: 100px;
+    align-self: center;
+    justify-self: center;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #F1EFEF;
+    color: #191717;
+    border-style: solid solid solid solid;
+    border-width: 5px 5px 5px 5px;
+    border-color: #F1EFEF;
+}
+
+.submitAvailable{
+    grid-area: C;
+    width: 200px;
+    height: 100px;
+    align-self: center;
+    justify-self: center;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #F1EFEF;
+    color: #191717;
+    border-style: solid solid solid solid;
+    border-width: 5px 5px 5px 5px;
+    border-color: #F1EFEF;
+}
+
+.submitAvailable:hover{
+    color: #F1EFEF;
+    background-color: #191717;
+}
+
