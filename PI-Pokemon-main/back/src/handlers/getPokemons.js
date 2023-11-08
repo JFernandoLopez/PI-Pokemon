@@ -6,7 +6,8 @@ const getPokemons = async (req, res) => {
         const pokemons = await ctrlGetPokemons(URL)
         return res.status(200).json(pokemons)
     } catch (error) {
-        return res.status(404).json(error)
+        console.log(error)
+        return res.status(404).json('Something happens')
     }
 };
 
